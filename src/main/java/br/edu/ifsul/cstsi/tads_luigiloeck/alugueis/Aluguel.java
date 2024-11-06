@@ -1,6 +1,5 @@
 package br.edu.ifsul.cstsi.tads_luigiloeck.alugueis;
 
-import br.edu.ifsul.cstsi.tads_luigiloeck.apolices.ApoliceSeguro;
 import br.edu.ifsul.cstsi.tads_luigiloeck.carros.Carro;
 import br.edu.ifsul.cstsi.tads_luigiloeck.pessoas.Motorista;
 import jakarta.persistence.*;
@@ -10,9 +9,8 @@ import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
-@Entity
+@Entity(name = "Aluguel")
 @Table(name = "alugueis")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -24,20 +22,14 @@ public class Aluguel {
     private Date dataEntrega;
     private Date dataDevolucao;
     private BigDecimal valorTotal;
+    private BigDecimal valorFranquia;
+    private Boolean protecaoTerceiro;
+    private Boolean protecaoCausasNaturais;
+    private Boolean protecaoRoubo;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "motorista_id", referencedColumnName = "id")
     private Motorista motorista;
-    @Embedded
-    private ApoliceSeguro apolice;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "carro_id", referencedColumnName = "id")
     private Carro carro;
-
-    @Override
-    public String toString() {
-        return "Aluguel{" +
-                "id=" + id +
-                ", valorTotal=" + valorTotal +
-                '}';
-    }
 }

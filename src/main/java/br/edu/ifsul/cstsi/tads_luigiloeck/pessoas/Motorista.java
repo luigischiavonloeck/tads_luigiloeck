@@ -7,8 +7,8 @@ import lombok.*;
 
 import java.util.List;
 
-@EqualsAndHashCode(callSuper = true)
-@Entity
+//@EqualsAndHashCode(callSuper = true)
+@Entity(name = "Motorista")
 @PrimaryKeyJoinColumn(name = "pessoa_id")
 @Table(name = "motoristas")
 @Getter
@@ -19,12 +19,4 @@ public class Motorista extends Pessoa {
     private String numeroCNH;
     @OneToMany(mappedBy = "motorista",fetch = FetchType.EAGER)
     private List<Aluguel> alugueis;
-
-    @Override
-    public String toString() {
-        return "\nMotorista{" +
-                "numeroCNH='" + numeroCNH + '\'' +
-                ", alugueis=" + alugueis +
-                "} " + super.toString();
-    }
 }

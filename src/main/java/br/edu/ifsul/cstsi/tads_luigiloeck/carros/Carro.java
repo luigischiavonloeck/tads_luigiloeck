@@ -12,7 +12,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.List;
 
-@Entity
+@Entity(name = "Carro")
 @Table(name = "carros")
 @AllArgsConstructor
 @NoArgsConstructor

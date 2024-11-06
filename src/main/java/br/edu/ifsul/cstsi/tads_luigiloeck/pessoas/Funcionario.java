@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity
+@Entity(name = "Funcionario")
 @PrimaryKeyJoinColumn(name = "pessoa_id")
 @Table(name = "funcionarios")
 @AllArgsConstructor

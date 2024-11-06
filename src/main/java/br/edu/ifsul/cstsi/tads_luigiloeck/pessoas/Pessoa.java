@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 
-@Entity(name="pessoa")
+@Entity(name="Pessoa")
 @Table(name = "pessoas")
 @Inheritance(strategy = InheritanceType.JOINED)
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public abstract class Pessoa {

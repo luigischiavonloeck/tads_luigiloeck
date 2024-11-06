@@ -7,9 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 
-@Entity
+@Entity(name = "Fabricante")
 @Table(name = "fabricantes")
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -18,12 +17,4 @@ public class Fabricante {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-
-    @Override
-    public String toString() {
-        return "Fabricante{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                '}';
-    }
 }
