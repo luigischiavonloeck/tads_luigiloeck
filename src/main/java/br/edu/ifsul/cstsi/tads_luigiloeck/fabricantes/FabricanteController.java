@@ -1,6 +1,7 @@
 package br.edu.ifsul.cstsi.tads_luigiloeck.fabricantes;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -15,7 +16,7 @@ public class FabricanteController {
     public FabricanteController(FabricanteRepository fabricanteRepository) {
         this.fabricanteRepository = fabricanteRepository;
     }
-
+    @Secured("ROLE_ADMIN")
     @GetMapping
     public ResponseEntity<List<FabricanteDto>> findAll() {
         return ResponseEntity.ok(fabricanteRepository.findAll().stream().map(FabricanteDto::new).toList());
@@ -36,6 +37,7 @@ public class FabricanteController {
     }
 
     @PostMapping
+    @Secured("ROLE_ADMIN")
     public ResponseEntity<URI> insert(@RequestBody FabricanteDto fabricanteDTO, UriComponentsBuilder uriBuilder) {
        var fabricante = fabricanteRepository.save(new Fabricante(null,fabricanteDTO.nome()));
        URI uri = uriBuilder.path("/api/v1/fabricante/{id}").buildAndExpand(fabricante.getId()).toUri();
